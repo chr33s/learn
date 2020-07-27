@@ -34,8 +34,12 @@ main section p {
 }
 
 main nav {
+  bottom: 30px;
   display: flex;
   flex-direction: row;
+  left: 50%;
+  margin-left: -92px;
+  position: absolute;
   width: 184px;
 }
 
