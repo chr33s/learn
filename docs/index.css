@@ -1,0 +1,51 @@
+* {
+  color: #5e5952;
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.75px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body,
+main {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+main section {
+  display: none;
+}
+
+main section p {
+  font-size: 2em;
+  text-align: center;
+}
+
+main nav {
+  display: flex;
+  flex-direction: row;
+  width: 184px;
+}
+
+main nav a {
+  display: block;
+  flex: 1;
+  padding: 10px;
+  z-index: 10;
+}
+
+.show {
+  display: initial;
+}
