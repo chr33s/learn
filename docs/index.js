@@ -1,21 +1,21 @@
-const main = async () => {
+async function render(value) {
   const invert = localStorage.getItem('invert') === 'true';
+
   let data = JSON.parse(localStorage.getItem('data'));
   if (!data) {
-    const res = await fetch('data/vn/numbers.json');
+    const res = await fetch(`data/vn/${value}.json`);
     data = await res.json();
     if (invert) {
       data = Object.entries(data).reduce((o, [k, v]) => ({ ...o, [v]: k }), {});
     }
-    localStorage.setItem('data', JSON.stringify(data));
     localStorage.setItem('invert', !invert);
+    localStorage.setItem('data', JSON.stringify(data));
   }
 
   const questions = Object.keys(data);
   const answers = Object.values(data);
 
   const m = document.querySelector('main');
-
   let index = m.getAttribute('data-id');
   if (!index) {
     index = Math.floor(Math.random() * questions.length);
@@ -28,6 +28,7 @@ const main = async () => {
 
   const answer = document.querySelector('#answer');
   answer.querySelector('p').innerText = answers[index];
+  answer.classList.remove('show');
 
   m.onclick = (e) => {
     e.preventDefault();
@@ -56,9 +57,31 @@ const main = async () => {
       answer.classList.remove('show');
       question.classList.add('show');
 
-      main();
+      render(value);
     };
   });
 }
 
+const main = () => {
+  const m = document.querySelector('main');
+  const select = document.querySelector('select');
+  select.addEventListener('change', (e) => {
+    e.preventDefault();
+
+    localStorage.removeItem('data');
+    localStorage.setItem('invert', false);
+    localStorage.setItem('topic', e.target.value);
+
+    m.removeAttribute('data-id');
+
+    render(e.target.value);
+  });
+
+  const topic = localStorage.getItem('topic');
+  if (topic) {
+    select.value = topic;
+  }
+
+  render(select.value);
+}
 (main)();
