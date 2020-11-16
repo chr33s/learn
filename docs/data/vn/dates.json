@@ -1,0 +1,16 @@
+{
+	"sunday": "chủ nhật",
+	"monday": "thứ hai",
+	"tuesday": "thứ ba",
+	"wednesday": "thứ tư",
+	"thursday": "thứ năm",
+	"friday": "thứ sáu",
+	"saturday": "ngày thứ bảy",
+	"month": "{number} háng",
+	"yesterday": "hôm qua",
+	"today": "hôm nay",
+	"tomorrow": "ngày mai",
+	"morning": "buổi sáng",
+	"afternoon": "buổi chiều",
+	"evening": "tối"
+}
